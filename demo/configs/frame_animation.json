@@ -1,0 +1,86 @@
+{
+	"task_id":"test",
+	"task_type":"lua",
+	"task_file":"../../src/lua/huya.lua",
+	"input_stream_list":[
+		{
+			"stream_name":"input_stream",
+			"type":"av_stream",
+			"mix_type":2,
+			"z_order":0,
+			"src":"../data/media/file.flv",
+			"crop_rect":{
+				"left":0,
+				"top":0,
+				"right":1920,
+				"bottom":1080
+			},
+			"put_rect":{
+				"left":0,
+				"top":0,
+				"right":1920,
+				"bottom":1080
+			}
+		},
+		{
+			"input_list":[
+				{
+					"content":"multi_pk_anim_particle_default",
+					"current_time":0,
+					"repeat_count":5,
+					"index":101,
+					"mix_type":0,
+					"property_modify":"put_rect",
+					"put_rect":{
+							"bottom": 182,
+							"left": 500,
+							"right":1000,
+							"top":2
+					},
+					"start_time":0,
+					"start_value":{
+						"put_rect":{
+							"bottom": 182,
+							"left": 0,
+							"right":500,
+							"top": 2
+						}
+					},
+					"step_size":2,
+					"type":"frame_animation",
+					"version":2,
+					"z_order":1
+				}
+			],
+			"name":"test_animation",
+			"type":"group_container",
+			"z_order":10,
+			"output":{
+				"height":100,
+				"width":1120,
+				"left": 400,
+				"scale":1.0,
+				"top": 980
+			}
+		}
+	],
+	"out_stream":{
+		"push_type":"local",
+		"stream_name":"test_stream",
+		"type":"out_stream",
+		"dst":"output.flv",
+		"codec":{
+			"video":{
+				"width":1920,
+				"height":1080,
+				"kpbs":2000,
+				"codec":"h264",
+				"fps":30
+			},
+			"audio":{
+				"channel":2,
+				"sample_rate":44100
+			}
+		}
+	}
+}
