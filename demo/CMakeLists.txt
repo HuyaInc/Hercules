@@ -38,7 +38,6 @@ find_library(SRS_LIB
 
 target_link_libraries(mixdemo
     libmixsdk.a
-    libutil.a
     libavformat.a
     libavcodec.a
     libavutil.a
@@ -51,9 +50,7 @@ target_link_libraries(mixdemo
     libopencv_imgproc.a
     libopencv_core.a
     libopencv_highgui.a
-    libippicv.a
     libfreeimage.a
-    libtcmalloc.a
     libx264.a
     liblibjasper.a
     libIlmImf.a
@@ -73,6 +70,5 @@ target_link_libraries(mixdemo
     curl
     ssl
     crypto
-    lzma
     )
 

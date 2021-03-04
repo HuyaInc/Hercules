@@ -6,6 +6,16 @@ echo workdir:$home
 mkdir -p third_party
 cd third_party
 
+:<<!
+LIBGPHOTO2_DIR=./libgphoto2
+#dowload libgphoto2
+if [ ! -d "$LIBGPHOTO2_DIR" ]; then
+    git clone https://github.com/gphoto/libgphoto2.git
+fi
+cd libgphoto2
+!
+
+
 OPENCV_SRC_DIR=./opencv
 
 ##download opencv
@@ -29,7 +39,7 @@ fi
 mkdir -p build
 cd build
 
-/usr/bin/cmake -DBUILD_DOCS=off \
+cmake -DBUILD_DOCS=off \
     -DBUILD_SHARED_LIBS=off \
     -DBUILD_FAT_JAVA_LIB=off \
     -DBUILD_TESTS=off \
@@ -75,6 +85,7 @@ cd build
     -DWITH_OPENCL=off \
     -DWITH_OPENCLAMDBLAS=off \
     -DWITH_OPENCLAMDFFT=off \
+    -DWITH_IPP=off \
     -DCMAKE_BUILD_TYPE=RELEASE  \
     -DCMAKE_INSTALL_PREFIX=../install \
     ../
