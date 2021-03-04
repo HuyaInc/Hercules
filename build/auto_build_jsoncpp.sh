@@ -40,5 +40,6 @@ cd $home
 mkdir -p $home/include
 mkdir -p $home/lib/jsoncpp
 cp -rf $home/third_party/jsoncpp/install/include/*  $home/include/
-cp -rf $home/third_party/jsoncpp/install/lib/x86_64-linux-gnu/libjsoncpp.a  $home/lib/jsoncpp/
+LIBJSONCPP_PATH=`find ./ -name libjsoncpp.a`
+cp -rf $home/$LIBJSONCPP_PATH  $home/lib/jsoncpp/
 echo "copy header and lib success"

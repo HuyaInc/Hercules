@@ -37,9 +37,12 @@ echo "download fdk-aac..."
 cd $home
 FDKAAC_DIR=./fdk-aac
 if [ ! -d "$FDKAAC_DIR" ]; then
-    git clone https://github.com/mstorsjo/fdk-aac.git 
-    cd fdk-aac
-    git checkout -b 0.1.6 v0.1.6
+    #git clone https://github.com/mstorsjo/fdk-aac.git 
+    #cd fdk-aac
+    #git checkout -b 0.1.6 v0.1.6
+    wget "https://sourceforge.net/projects/opencore-amr/files/fdk-aac/fdk-aac-0.1.6.tar.gz"
+	tar xzvf fdk-aac-0.1.6.tar.gz
+	mv fdk-aac-0.1.6 fdk-aac
 fi
 cd $home
 echo "download fdk-aac success"
@@ -61,8 +64,9 @@ echo "compile x264 success"
 ##compile fdk-aac
 echo "compile fdk-aac..."
 cd $home/fdk-aac
-./autogen.sh
-./configure --prefix=$home/fdk-aac
+#./autogen.sh
+#./configure --prefix=$home/fdk-aac
+./configure --program-prefix=$home/fdk-aac --prefix=$home/fdk-aac
 make && make install
 cp -rf ./include/fdk-aac $home/ffmpeg/include
 mkdir -p $home/ffmpeg/lib/fdk-aac
@@ -80,7 +84,7 @@ PKG_CONFIG_PATH=./lib/x264:./lib/fdk-aac/pkgconfig ./configure --disable-yasm --
     --disable-devices --disable-vaapi  --enable-hardcoded-tables --enable-decoder=svq3  --enable-protocol=file --enable-small\
     --extra-cflags='-fPIC -I/usr/local/include -I./include/x264 -I./include/fdk-aac'\
     --extra-ldflags='-L/local/lib -L/usr/local/lib -L./lib/x264 -L./lib/fdk-aac'\
-    --extra-libs="./lib/x264/libx264.a ./lib/fdk-aac/libfdk-aac.a -lstdc++ -ldl -lcurl -lssl"\
+    --extra-libs="./lib/x264/libx264.a ./lib/fdk-aac/libfdk-aac.a -lstdc++ -ldl"\
     --enable-runtime-cpudetect --prefix=.
 
 make -j 10 && make install
@@ -96,6 +100,7 @@ cp -rf $home/ffmpeg/include/* $dir/include
 cp -rf $home/ffmpeg/lib/*.a $dir/lib
 cp -rf $home/ffmpeg/lib/x264/*.a $dir/lib
 cp -rf $home/ffmpeg/lib/fdk-aac/*.a $dir/lib
+
 cp -rvf $home/ffmpeg/libavformat/avc.h $dir/include/libavformat
 cp -rvf $home/ffmpeg/libavutil/atomic.h $dir/include/libavutil
 cp -rvf $home/ffmpeg/libavutil/atomic_gcc.h $dir/include/libavutil
