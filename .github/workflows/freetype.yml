@@ -13,5 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: add libbrotli-dev
+      run: sudo apt install libbrotli-dev
     - name: freetype check
       run: sh ./build/auto_build_freetype.sh
