@@ -79,7 +79,7 @@ echo "compile ffmpeg..."
 cd $home/ffmpeg
 echo `pwd`
 PKG_CONFIG_PATH=./lib/x264:./lib/fdk-aac/pkgconfig ./configure --disable-yasm --enable-static --enable-gpl --disable-vdpau --disable-doc --disable-avdevice\
-    --disable-postproc --enable-avfilter --disable-network --enable-memalign-hack --enable-libx264\
+    --disable-postproc --enable-avfilter --disable-network --enable-memalign-hack --enable-libx264 --disable-lzma\
     --enable-decoder=h264 --enable-decoder=hevc --enable-decoder=aac --enable-encoder=aac --enable-libfdk-aac --enable-nonfree\
     --disable-devices --disable-vaapi  --enable-hardcoded-tables --enable-decoder=svq3  --enable-protocol=file --enable-small\
     --extra-cflags='-fPIC -I/usr/local/include -I./include/x264 -I./include/fdk-aac'\
