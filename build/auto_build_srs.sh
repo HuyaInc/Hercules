@@ -9,7 +9,7 @@ echo "download srs..."
 cd $home
 SRS_DIR=./srs
 if [ ! -d "$SRS_DIR" ]; then
-    git clone https://github.com/ossrs/srs.git
+    git clone -b 3.0release https://github.com/ossrs/srs.git
 fi
 cd $home
 echo "download srs success"
